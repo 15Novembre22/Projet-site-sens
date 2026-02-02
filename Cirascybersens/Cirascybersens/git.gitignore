@@ -1,0 +1,15 @@
+# Environnement virtuel
+Myenvsite/
+venv/
+env/
+
+# Fichiers Python compilés
+__pycache__/
+*.py[cod]
+
+# Base de données locale (ne pas partager en équipe)
+db.sqlite3
+
+# Fichiers système
+.DS_Store
+Thumbs.db
