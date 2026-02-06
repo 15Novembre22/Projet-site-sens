@@ -1,0 +1,74 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'welcome.css' %}">
+    <title>Ciras Cybersens</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#"> <img src="/static/logo.jpg" alt="" class="logo"> </a>
+            <ul>
+                <li> <a href="#accueil">Accueil</a> </li>
+                <li> <a href="#assistance">Assistance</a> </li>
+                <li> <a href="#signaler">Signaler</a> </li>
+                <li> <a href="#s'informer">S'informer</a> </li>
+                <li> <a href="#">Apropos</a> </li>
+            </ul>
+            <img src="/static/menu.png" alt="" class="menu">
+        </nav>
+    </header>
+    <main>
+    <section id="Accueil" class="text">
+
+          <h1>Bienvenue  <span class="auto-typing"></span></h1>
+
+            <p>Renforcez votre vigilance numérique!
+             <br> <b> Le CIRAS</b> vous accompagne pour comprendre les cybermenaces </br>
+              et adopter les bons réflexes.
+              <br> <b> Ensemble, sécurisons notre environnement digital.</b> </br>
+            </p> 
+            <div class="buttons">
+               <button class="btn-incident"> <a href="#signaler">Signaler un incident</a> </button>
+               <button class="cta-button"> <a href="#s'informer">Cyber hygiène</a> </button>
+            </div>
+          
+    </section>
+            <div class="overlay">
+
+            </div>
+            <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+            <script>
+                let typed = new Typed('.auto-typing', {
+                    strings: ['dans', 'Ciras' ,'Cyber', 'Sens...'],
+                    typeSpeed: 150,
+                    backSpeed: 150,
+                    loop: true,
+                    fadeOut:true,
+                    fadeOutClass:'typed-fade-out',
+                    fadeOutDelay:120,
+                    showCursor: false
+                })
+            </script>
+        <section id="s'informer" class="content-section">
+            <h2>S'informer</h2>
+            <p>Les différentes formes de cyberattaques les plus courants</p>
+        </section>
+
+        <section id="assistance" class="content-section">
+                <h2>Besoin d'aide ?</h2>
+        <p>Contenu de la section assistance...</p>
+        </section>
+
+        <section id="signaler" class="content-section">
+        <h2>Signaler un incident</h2>
+        </section>
+
+
+        </main>
+</body>
+</html>
