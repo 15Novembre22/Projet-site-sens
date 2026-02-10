@@ -12,14 +12,19 @@
     <header>
         <nav>
             <a href="#"> <img src="/static/logo.jpg" alt="" class="logo"> </a>
-            <ul>
+            <ul id="nav-list">
                 <li> <a href="#accueil">Accueil</a> </li>
                 <li> <a href="#assistance">Assistance</a> </li>
                 <li> <a href="#signaler">Signaler</a> </li>
                 <li> <a href="#s'informer">S'informer</a> </li>
                 <li> <a href="#">Apropos</a> </li>
             </ul>
-            <img src="/static/menu.png" alt="" class="menu">
+            
+            <div class="menu-burger" id="burger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </nav>
     </header>
     <main>
@@ -44,16 +49,34 @@
             <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
             <script>
                 let typed = new Typed('.auto-typing', {
-                    strings: ['dans', 'Ciras' ,'Cyber', 'Sens...'],
+                    strings: ['dans', "l'ère" ,'de la', 'vigilance','digitale'],
                     typeSpeed: 150,
                     backSpeed: 150,
                     loop: true,
                     fadeOut:true,
                     fadeOutClass:'typed-fade-out',
                     fadeOutDelay:500,
-                    showCursor: false
-                })
-            </script>
+                    showCursor: true
+                });
+
+
+        const burger = document.getElementById('burger-menu');
+        const navList = document.getElementById('nav-list');
+
+        burger.addEventListener('click', () => {
+            burger.classList.toggle('active');
+            navList.classList.toggle('active');
+        });
+
+        // Fermer le menu au clic sur un lien
+        document.querySelectorAll('#nav-list a').forEach(link => {
+            link.addEventListener('click', () => {
+                burger.classList.remove('active');
+                navList.classList.remove('active');
+            });
+        });
+        </script>
+
         <section id="s'informer" class="content-section">
             <h2>S'informer</h2>
             <p>Les différentes formes de cyberattaques les plus courants</p>

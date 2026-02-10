@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap');
+
 *, *::before, *::after {
     margin: 0;
     padding: 0;
@@ -8,70 +9,120 @@
 body {
     font-family: 'Times New Roman', Times, serif;
     font-size: 14px;
-    overflow-x: hidden; /* Évite le scroll horizontal sur mobile */
+    overflow-x: hidden;
 }
 
-
-
 html {
-    scroll-behavior: smooth; /* Animation de défilement douce */
+    scroll-behavior: smooth;
 }
 
 section {
-    min-height: 100vh; /* Chaque section prend au moins toute la hauteur de l'écran */
-    padding: 80px 10%; /* Espace pour ne pas que le contenu soit caché sous le header fixe */
+    min-height: 100vh;
+    padding: 80px 10%;
 }
-/* Fond optimisé avec voile sombre pour la lisibilité */
+
 .overlay {
-    position: fixed; /* Changé de absolute à fixed pour couvrir tout l'écran */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                url('/static/ground.jpg') center center no-repeat;
+                url('ground.jpg') center center no-repeat;
     background-size: cover;
     z-index: -1;
 }
-       
+
 header {
-    width: 90%; /* Augmenté pour plus d'espace sur petit écran */
+    width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-}        
+}
 
 nav {
     display: flex;
-    justify-content: space-between; /* Aligne logo à gauche et menu à droite */
+    justify-content: space-between;
     align-items: center;
     padding: 20px 0;
 }
 
 nav .logo {
-    width: 60px; /* Réduit pour mobile */
+    width: 60px;
     border-radius: 50%;
 }
 
-/* Gestion de la Navigation Mobile */
-@media screen and (max-width:900px) {
-    
-
-nav ul {
+/* --- STYLE DU BURGER --- */
+.menu-burger {
+    width: 30px;
+    height: 20px;
     display: flex;
     flex-direction: column;
-    position: absolute;
-    background-color:rgb(10, 181, 44);
-    width: 100%; 
-    height: 100vh;/* Masqué par défaut sur mobile */
-}
-}
-/* Icône Menu Burger (Assurez-vous d'avoir une classe .menu sur votre img/svg) */
-nav .menu {
-    width: 30px;
+    justify-content: space-between;
     cursor: pointer;
-    display: block;
-
+    z-index: 2000;
+    position: relative;
 }
+
+.menu-burger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+/* Animation de l'icône en X */
+.menu-burger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.menu-burger.active span:nth-child(2) { opacity: 0; }
+.menu-burger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+/* --- NAVIGATION MOBILE (Max 900px) --- */
+@media screen and (max-width: 900px) {
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+        position: fixed;
+        top: 0;
+        right: -100%; /* Caché par défaut */
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(208, 53, 53, 0.95); /* Ton rouge */
+        backdrop-filter: blur(30px);
+        transition: right 0.5s ease-in-out;
+        z-index: 1000;
+    }
+
+    nav ul.active {
+        right: 0; /* Glisse vers l'écran */
+    }
+
+    nav ul li { margin: 20px 0; font-size: 1.5rem; }
+    nav ul li a { color: white; text-decoration: none; }
+}
+
+/* --- NAVIGATION ORDINATEUR (Min 901px) --- */
+@media screen and (min-width: 901px) {
+    .menu-burger { display: none; }
+
+    nav ul {
+        display: flex;
+        list-style: none;
+    }
+
+    nav ul li { margin-left: 25px; }
+    nav ul li a {
+        text-decoration: none;
+        color: #F8F9FA;
+        font-size: 1.2em;
+    }
+}
+
+/* ... Le reste de tes styles de boutons et texte (identiques) ... */
+
 
 .buttons {
    display: flex;
@@ -124,32 +175,9 @@ nav .menu {
     letter-spacing: 1.5px;
 }
 
-/* --- Media Queries pour Ordinateurs --- */
-@media (min-width: 768px) {
-    nav .logo { width: 80px; }
-    
-    nav .menu { display: none; } /* Cache le burger sur PC */
+/* (Ajoute ici le reste de tes styles .btn-incident, .text h1, etc.) */
+.text h1 { font-size: 75px; } /* Grande taille sur PC */
 
-    nav ul {
-        display: flex; /* Affiche les liens sur PC */
-        list-style: none;
-    }
-
-    nav ul li { margin-left: 25px;
-        }
-    nav ul li a {
-    text-decoration: none;
-    color: #F8F9FA ;
-    font-size: 1.2em;
-    transition: color 3s;
-    }
-
-    nav ul li a:hover{
-    color:aqua;
-    }
-
-    .text h1 { font-size: 75px; } /* Grande taille sur PC */
-}
 
 /* --- Section Texte Responsive --- */
 .text {
@@ -173,6 +201,7 @@ nav .menu {
     color: #F8F9FA;
 }
 
+
 .auto-typing {
     color: #007bff; /* Un joli bleu pour attirer l'oeil */
     font-weight: bold;
@@ -187,4 +216,3 @@ nav .menu {
 .content-section h2{
     color: white;
 }
-
