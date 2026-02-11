@@ -13,7 +13,7 @@
         <nav>
             <a href="#"> <img src="/static/logo.jpg" alt="" class="logo"> </a>
             <ul id="nav-list">
-                <li> <a href="#accueil">Accueil</a> </li>
+                <li> <a href="#accueil" class="active">Accueil</a> </li>
                 <li> <a href="#assistance">Assistance</a> </li>
                 <li> <a href="#signaler">Signaler</a> </li>
                 <li> <a href="#s'informer">S'informer</a> </li>
@@ -28,14 +28,14 @@
         </nav>
     </header>
     <main>
-    <section id="Accueil" class="text">
+    <section id="accueil" class="text">
 
           <h1>Bienvenue  <span class="auto-typing"></span></h1>
 
             <p>Renforcez votre vigilance numérique!
              <br> <b> Le CIRAS</b> vous accompagne pour comprendre les cybermenaces </br>
               et adopter les bons réflexes.
-              <br> <b> Ensemble, sécurisons notre environnement digital.</b> </br>
+              <br> <b> Ensemble, sécurisons notre environnement digital.</b> 
             </p> 
             <div class="buttons">
                <button class="btn-incident"> <a href="#signaler">Signaler un incident</a> </button>
@@ -78,9 +78,30 @@
         </script>
 
         <section id="s'informer" class="content-section">
-            <h2>S'informer</h2>
-            <p>Les différentes formes de cyberattaques les plus courants</p>
-        </section>
+            <div class="section-header">
+                <h2>S'informer</h2>
+                <p>Les différentes formes de cyberattaques les plus courantes</p>
+            </div>
+    <div class="grid-container">
+        {% for conseil in all_conseils %}
+        <article class="card">
+            {% if conseil.image %}
+                <img src="{{ conseil.image.url }}" alt="{{ conseil.titre }}">
+            {% endif %}
+            
+            <div class="card-content">
+                <span class="badge {{ conseil.categorie }}">
+                    {{ conseil.get_categorie_display }}
+                </span>
+                
+                <h3>{{ conseil.titre }}</h3>
+                <p>{{ conseil.description|truncatechars:150 }}</p>
+            </div>
+        </article>
+        {% empty %}
+            <p>Aucun conseil disponible pour le moment.</p>
+        {% endfor %}
+    </div> </section>
 
         <section id="assistance" class="content-section">
                 <h2>Besoin d'aide ?</h2>
