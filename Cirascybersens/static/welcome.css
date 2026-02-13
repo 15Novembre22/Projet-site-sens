@@ -260,6 +260,7 @@ nav a:hover, .menu-burger.active{
 }
 .badge{
     background-color: #ff4757;
+    color:#fafbfa;
 }
 .section-header {
     display: flex;
