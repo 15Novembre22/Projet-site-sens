@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.html import format_html
 from .models import CyberHygiene
 
-admin.site.site_header = "Administration CyberSécurité"
+admin.site.site_header = "Espace admin CIRAS Cybersens"
 admin.site.site_title = "Portail CyberHygiène"
 admin.site.index_title = "Bienvenue sur votre gestionnaire de contenu"
 

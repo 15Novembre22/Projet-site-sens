@@ -6,7 +6,7 @@ from django.utils.text import slugify
 class CyberHygiene(models.Model):
     CATEGORIE_CHOICES = [
         ('deepfake', 'Deepfake'),
-        ('ranconware', 'Rançonware'),
+        ('ranconware', 'Ransonware'),
         ('phishing', 'Phishing'),
         ('fake-news', 'Fake News'),
         ('autre', 'Autre'),
@@ -16,7 +16,7 @@ class CyberHygiene(models.Model):
     slug = models.SlugField(max_length=150, unique=True, blank=True)
     categorie= models.CharField(max_length=50,choices=CATEGORIE_CHOICES)
     image = models.ImageField(upload_to='cyber_hygiene/')
-    description = models.TextField(max_length=500)
+    description = models.TextField(max_length=700)
     date_pub =models.DateTimeField(auto_now_add=True)
 
     class Meta:

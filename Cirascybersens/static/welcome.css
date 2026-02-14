@@ -6,6 +6,12 @@
     box-sizing: border-box;
 }
 
+:root {
+  --primary-green: #1a8a4d; /* Le vert institutionnel du CIRAS */
+  --text-gray: #666;
+  --bg-light: #f9f9f9;
+}
+
 body {
     font-family: 'Times New Roman', Times, serif;
     font-size: 14px;
@@ -216,9 +222,20 @@ nav a:hover, .menu-burger.active{
     opacity: 0;
     transition: opacity .25s;
 }
-
+.content-section{
+background-color: var(--bg-light);
+  padding: 50px 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
 .content-section h2{
-    color: white;
+    text-align: center;
+    color: rgb(90, 88, 88);
+    font-weight: bold;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    position: relative;
 }
 
 
@@ -251,6 +268,7 @@ nav a:hover, .menu-burger.active{
 
 .card-content {
     padding: 15px;
+    color: yellow;
 }
 
 .card:hover {
@@ -258,8 +276,9 @@ nav a:hover, .menu-burger.active{
     transition: 0.3s ease;
     box-shadow: 0 15px 30px rgba(0,0,0,0.5);
 }
-.badge{
-    background-color: #ff4757;
+ .card-content.badge{
+    background-color: #0f6f02;
+   
     color:#fafbfa;
 }
 .section-header {
@@ -273,7 +292,7 @@ nav a:hover, .menu-burger.active{
 }
 .section-header h2 {
     font-size: 2.8rem;
-    color: #ffffff;
+    color: #7d7979;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 3px;
@@ -297,4 +316,11 @@ nav a:hover, .menu-burger.active{
     max-width: 650px; /* Limite la largeur pour une meilleure lecture */
     line-height: 1.6;
     font-weight: 300;
+}
+
+.btn-read-more {
+    color: #b9090f;
+    font-weight: bold;
+    font-size: 0.85rem;
+    transition: gap 0.3s;
 }

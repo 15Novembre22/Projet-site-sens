@@ -11,7 +11,7 @@
 <body>
     <header>
         <nav>
-            <a href="#"> <img src="/static/logo.jpg" alt="" class="logo"> </a>
+            <a href="#accueil"> <img src="/static/logo.jpg" alt="" class="logo"> </a>
             <ul id="nav-list">
                 <li> <a href="#accueil" class="active">Accueil</a> </li>
                 <li> <a href="#assistance">Assistance</a> </li>
@@ -84,7 +84,7 @@
             </div>
     <div class="grid-container">
         {% for conseil in all_conseils %}
-        <article class="card">
+        <article class="card" onclick="location.href='#'">
             {% if conseil.image %}
                 <img src="{{ conseil.image.url }}" alt="{{ conseil.titre }}">
             {% endif %}
@@ -96,7 +96,11 @@
                 
                 <h3>{{ conseil.titre }}</h3>
                 <p>{{ conseil.description|truncatechars:150 }}</p>
+                <div class="card-footer">
+                <span class="btn-read-more">En savoir plus <i class="arrow-icon">→</i></span>
             </div>
+            </div>
+            
         </article>
         {% empty %}
             <p>Aucun conseil disponible pour le moment.</p>
