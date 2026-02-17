@@ -268,7 +268,7 @@ background-color: var(--bg-light);
 
 .card-content {
     padding: 15px;
-    color: yellow;
+    color:#555855;
 }
 
 .card:hover {
@@ -279,7 +279,6 @@ background-color: var(--bg-light);
  .card-content.badge{
     background-color: #0f6f02;
    
-    color:#fafbfa;
 }
 .section-header {
     display: flex;
@@ -323,4 +322,87 @@ background-color: var(--bg-light);
     font-weight: bold;
     font-size: 0.85rem;
     transition: gap 0.3s;
+}
+
+
+
+
+.incident-container {
+    max-width: 650px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.05); /* Fond subtil */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Titres */
+.incident-container h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+    color: #00d4ff; /* Couleur d'accentuation */
+}
+
+.subtitle {
+    text-align: center;
+    color: #b0b0b0;
+    margin-bottom: 30px;
+    font-size: 0.9rem;
+}
+
+/* Style des champs (Labels et Inputs) */
+.incident-container p {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.incident-container label {
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.incident-container input, 
+.incident-container textarea, 
+.incident-container select {
+    padding: 12px 15px;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background-color: #1a1a1a;
+    color: #fff;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Effet au focus (quand on clique dans un champ) */
+.incident-container input:focus, 
+.incident-container textarea:focus {
+    outline: none;
+    border-color: #00d4ff;
+    box-shadow: 0 0 8px rgba(0, 212, 255, 0.3);
+}
+
+/* Bouton d'envoi */
+.btn-submit {
+    width: 100%;
+    padding: 14px;
+    background-color: #00d4ff;
+    color: #000;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background  0.3s, transform 0.2s;
+    margin-top: 10px;
+}
+
+.btn-submit:hover {
+    background-color: #0099cc;
+    transform: translateY(-2px);
 }

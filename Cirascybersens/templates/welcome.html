@@ -75,6 +75,54 @@
                 navList.classList.remove('active');
             });
         });
+
+
+    document.getElementById('incidentForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const form = this;
+    const btn = document.getElementById('submitBtn');
+    const feedback = document.getElementById('feedback');
+    const formData = new FormData(form);
+
+    // État de chargement
+    btn.disabled = true;
+    btn.innerText = "Envoi en cours...";
+    feedback.style.display = 'none';
+
+    try {
+        const response = await fetch("{% url 'incident' %}", {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+            }
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            // Succès
+            form.reset();
+            feedback.style.display = 'block';
+            feedback.style.backgroundColor = '#d4edda';
+            feedback.style.color = '#155724';
+            feedback.innerHTML = "<strong>Succès !</strong> Votre signalement a été transmis. Un conseiller vous contactera prochainement.";
+            btn.innerText = "ENVOYER LE SIGNALEMENT";
+            btn.disabled = false;
+        } else {
+            // Erreur serveur ou validation
+            throw new Error(data.message || "Une erreur est survenue.");
+        }
+    } catch (error) {
+        feedback.style.display = 'block';
+        feedback.style.backgroundColor = '#f8d7da';
+        feedback.style.color = '#721c24';
+        feedback.innerText = error.message;
+        btn.disabled = false;
+        btn.innerText = "RÉESSAYER";
+    }
+});
         </script>
 
         <section id="s'informer" class="content-section">
@@ -112,9 +160,22 @@
         <p>Contacter un assistant...</p>
         </section>
 
-        <section id="signaler" class="content-section">
-        <h2>Signaler un incident</h2>
+    <section id="signaler" class="spa-section">
+    <div class="incident-container">
+    <h2 class="form-title">Signaler un incident au CIRAS</h2>
+    <p class="subtitle">Toutes les informations transmises sont sécurisées et confidentielles.</p>
+    
+    <form method="post" enctype="multipart/form-data" class="custom-form">
+        {% csrf_token %}
+        <div class="form-grid">
+            {{ incident_form.as_p }}
+        </div>
+        <button type="submit" class="btn-submit">Envoyer le signalement</button>
+    </form>
+</div>
+
         </section>
+
 
 
         </main>
