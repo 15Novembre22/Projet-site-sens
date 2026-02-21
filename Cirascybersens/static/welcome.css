@@ -10,6 +10,12 @@
   --primary-green: #1a8a4d; /* Le vert institutionnel du CIRAS */
   --text-gray: #666;
   --bg-light: #f9f9f9;
+  --bg-dark: #062b4e;      /* Fond principal */
+  --card-bg:  #15e1e8;      /* Fond logo/newsletter */
+  --accent-green: #15e1e8; /* Vert bouton/icones */
+  --text-gold: #e2b14a;    /* Texte doré du logo */
+  --title-red: #cc3333;    /* Titres des colonnes */
+  --text-gray: #b0b3b8;    /* Liens et textes */
 }
 
 body {
@@ -27,16 +33,37 @@ section {
     padding: 80px 10%;
 }
 
+.parallax-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Remplacez par le chemin de votre image de clavier */
+    background: url('/static/ground.jpg') no-repeat center center / cover;
+    z-index: -1; /* Derrière tout le contenu */
+    transform: scale(1.1); /* Zoom de 10% pour la marge de mouvement */
+    will-change: transform;
+    transition: transform 0.2s ease-out; /* Fluidité du mouvement */
+}
+
+
+#accueil {
+    background: transparent;
+    position: relative;
+    z-index: 2;
+}
+
 .overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                url('ground.jpg') center center no-repeat;
+    background: rgba(0, 0, 0, 0.5);
     background-size: cover;
     z-index: -1;
+    pointer-events: none;
 }
 
 header {
@@ -136,9 +163,9 @@ nav a:hover, .menu-burger.active{
 
 .buttons {
    display: flex;
-    gap: 20px; /* Espace entre les deux boutons */
-    margin-top: 30px;
-    flex-wrap: wrap;
+   gap: 20px; /* Espace entre les deux boutons */
+   margin-top: 30px;
+   flex-wrap: wrap;
 }
 
 .buttons button {
@@ -325,84 +352,322 @@ background-color: var(--bg-light);
 }
 
 
-
-
+.spa-section {
+    background: var(--bg-dark);
+    padding: 80px 10%;
+    background-image: url(ado.jpg);
+}
 .incident-container {
-    max-width: 650px;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    max-width: 600px;
     margin: 40px auto;
-    padding: 30px;
-    background-color: rgba(255, 255, 255, 0.05); /* Fond subtil */
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    color: #ffffff;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); /* Ombre légère pour le relief */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Titres */
-.incident-container h2 {
+/* Titre et Sous-titre */
+.incident-container .form-title {
     text-align: center;
-    margin-bottom: 10px;
-    font-size: 1.8rem;
-    color: #00d4ff; /* Couleur d'accentuation */
+    color: #034c65; /* Bleu pro au lieu du rouge */
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
 }
 
-.subtitle {
+.incident-container .subtitle {
     text-align: center;
-    color: #b0b0b0;
+    color: #666;
+    font-size: 14px;
     margin-bottom: 30px;
-    font-size: 0.9rem;
 }
 
-/* Style des champs (Labels et Inputs) */
+/* Style des paragraphes Django (p) qui contiennent labels + inputs */
 .incident-container p {
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
 }
 
+/* Labels */
 .incident-container label {
-    margin-bottom: 8px;
     font-weight: 600;
-    font-size: 0.95rem;
+    margin-bottom: 8px;
+    color: #444;
+    font-size: 14px;
 }
 
+/* Inputs, Select, Textarea */
 .incident-container input, 
 .incident-container textarea, 
 .incident-container select {
+    background-color: #f8fafc; /* Fond très clair */
+    color: #333;
+    border: 1px solid #e2e8f0;
     padding: 12px 15px;
-    border-radius: 6px;
-    border: 1px solid #444;
-    background-color: #1a1a1a;
-    color: #fff;
-    font-size: 1rem;
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-/* Effet au focus (quand on clique dans un champ) */
-.incident-container input:focus, 
-.incident-container textarea:focus {
-    outline: none;
-    border-color: #00d4ff;
-    box-shadow: 0 0 8px rgba(0, 212, 255, 0.3);
-}
-
-/* Bouton d'envoi */
-.btn-submit {
+    border-radius: 8px;
+    font-size: 15px;
+    transition: all 0.3s ease;
     width: 100%;
-    padding: 14px;
-    background-color: #00d4ff;
-    color: #000;
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    font-size: 1.1rem;
+    box-sizing: border-box; /* Évite que l'input dépasse */
+}
+
+/* Focus : l'input s'illumine proprement */
+.incident-container input:focus, 
+.incident-container textarea:focus,
+.incident-container select:focus {
+    outline: none;
+    border-color: #07a5b0;
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(7, 165, 176, 0.1);
+}
+
+/* Style spécifique pour le champ fichier */
+.incident-container input[type="file"] {
+    background: transparent;
+    border: 2px dashed #cbd5e1;
+    padding: 20px;
     cursor: pointer;
-    transition: background  0.3s, transform 0.2s;
+}
+
+/* Bouton Envoyer */
+.btn-submit {
+    width: 100%; /* Largeur totale pour mobile-first */
+    padding: 14px;
+    background-color: #034c65;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
     margin-top: 10px;
 }
 
 .btn-submit:hover {
-    background-color: #0099cc;
-    transform: translateY(-2px);
+    background-color: #07a5b0;
+    transform: translateY(-1px);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+}
+
+
+
+
+
+        .footer {
+            background-color: var(--bg-dark);
+            color: white;
+            padding: 60px 20px 20px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+            gap: 40px;
+        }
+
+        /* Colonne 1: Identité */
+        .brand-box {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            
+        }
+        .brand-box img { width: 60px; height: auto; border-radius: 50px;}
+        .brand-box p {
+            color: whitesmoke;
+            font-size: 0.85rem;
+            font-weight: bold;
+            line-height: 1.4;
+            margin: 0;
+        }
+        .social-links { display: flex; gap: 10px; }
+        .social-links a {
+            background: var(--accent-green);
+            color: white;
+            width: 35px; height: 35px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 6px; text-decoration: none;
+            transition: 0.3s;
+        }
+
+        /* Styles colonnes titres et liens */
+        .footer-col h3 {
+            color: var(--title-red);
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            text-transform: capitalize;
+        }
+        .footer-col ul { list-style: none; padding: 0; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        .footer-col ul li a:hover { color: white; }
+
+        /* Colonne 4: Newsletter & Contact */
+        .newsletter-card {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        .newsletter-card p { font-size: 0.9rem; margin-top: 0; }
+        .form-group {
+            display: flex;
+            background: #242935;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .form-group input {
+            background: transparent; border: none;
+            padding: 10px; color: white; flex: 1; outline: none;
+        }
+        .form-group button {
+            background: var(--accent-green);
+            color: white; border: none;
+            padding: 0 15px; font-weight: bold; cursor: pointer;
+        }
+
+        .contact-details { font-size: 0.9rem; color: var(--text-gray); }
+        .contact-details div { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
+        .contact-details i { color: var(--accent-green); margin-top: 3px; }
+
+        /* Bottom bar */
+        .footer-bottom {
+            border-top: 1px solid #1f2531;
+            margin-top: 50px;
+            padding-top: 20px;
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 0.85rem;
+        }
+
+        /* Bouton Retour en haut */
+        .scroll-top {
+            position: fixed; bottom: 30px; right: 30px;
+            background: var(--accent-green);
+            width: 45px; height: 45px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: white; text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .footer-container { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 600px) {
+            .footer-container { grid-template-columns: 1fr; }
+        }
+
+
+
+        .help-section {
+    padding: 60px 20px;
+    background-color: #f9fbfd; /* Fond très léger pour détacher la section */
+    text-align: center;
+}
+
+.help-title {
+    font-size: 2rem;
+    color: #034c65;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.help-subtitle {
+    color: #666;
+    margin-bottom: 40px;
+}
+
+/* Grille de cartes */
+.help-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Style de la carte individuelle */
+.help-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.help-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+/* Icônes */
+.icon-wrapper {
+    width: 60px;
+    height: 60px;
+    background: rgba(7, 165, 176, 0.1);
+    color: #07a5b0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.help-card h3 {
+    color: #333;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.help-card p {
+    color: #777;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* Liens et Boutons */
+.help-link {
+    color: #07a5b0;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.help-link:hover {
+    color: #034c65;
+}
+
+.help-btn {
+    background: #034c65;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
 }

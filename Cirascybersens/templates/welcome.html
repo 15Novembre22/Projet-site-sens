@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'welcome.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <title>Ciras Cybersens</title>
 </head>
 <body>
@@ -17,7 +18,7 @@
                 <li> <a href="#assistance">Assistance</a> </li>
                 <li> <a href="#signaler">Signaler</a> </li>
                 <li> <a href="#s'informer">S'informer</a> </li>
-                <li> <a href="#">Apropos</a> </li>
+                <li> <a href="#apropos">À propos</a> </li>
             </ul>
             
             <div class="menu-burger" id="burger-menu">
@@ -28,14 +29,15 @@
         </nav>
     </header>
     <main>
+        <div class="parallax-bg"></div>
     <section id="accueil" class="text">
 
           <h1>Bienvenue  <span class="auto-typing"></span></h1>
 
             <p>Renforcez votre vigilance numérique!
-             <br> <b> Le CIRAS</b> vous accompagne pour comprendre les cybermenaces </br>
+             <br> <strong> Le CIRAS</strong> vous accompagne pour comprendre les cybermenaces </br>
               et adopter les bons réflexes.
-              <br> <b> Ensemble, sécurisons notre environnement digital.</b> 
+              <br> <strong> Ensemble, sécurisons notre environnement digital.</strong> 
             </p> 
             <div class="buttons">
                <button class="btn-incident"> <a href="#signaler">Signaler un incident</a> </button>
@@ -75,6 +77,20 @@
                 navList.classList.remove('active');
             });
         });
+
+        const bg = document.querySelector('.parallax-bg');
+
+        document.addEventListener('mousemove', (e) => {
+    // On calcule la position de la souris par rapport au centre de l'écran
+    // Division par 60 pour un mouvement très subtil et élégant
+        const moveX = (window.innerWidth / 2 - e.clientX) / 60;
+        const moveY = (window.innerHeight / 2 - e.clientY) / 60;
+
+    // On applique le mouvement en gardant le scale(1.1)
+        bg.style.transform = `scale(1.1) translate(${moveX}px, ${moveY}px)`;
+});
+
+
 
 
     document.getElementById('incidentForm').addEventListener('submit', async function(e) {
@@ -155,29 +171,122 @@
         {% endfor %}
     </div> </section>
 
-        <section id="assistance" class="content-section">
-                <h2>Besoin d'aide ?</h2>
-        <p>Contacter un assistant...</p>
-        </section>
+      <section id="assistance" class="help-section">
+    <div class="help-container">
+        <h2 class="help-title">BESOIN D'AIDE ?</h2>
+        <p class="help-subtitle">Contacter un assistant via l'un des canaux ci-dessous :</p>
 
-    <section id="signaler" class="spa-section">
-    <div class="incident-container">
-    <h2 class="form-title">Signaler un incident au CIRAS</h2>
-    <p class="subtitle">Toutes les informations transmises sont sécurisées et confidentielles.</p>
-    
-    <form method="post" enctype="multipart/form-data" class="custom-form">
-        {% csrf_token %}
-        <div class="form-grid">
-            {{ incident_form.as_p }}
+        <div class="help-grid">
+            <div class="help-card">
+                <div class="icon-wrapper">
+                    <i class="fas fa-phone-alt"></i> </div>
+                <h3>Par téléphone</h3>
+                <p>Une assistance rapide pour vos urgences techniques.</p>
+                <a href="tel:+33123456789" class="help-link">+242 06 123 45 67</a>
+            </div>
+
+            <div class="help-card">
+                <div class="icon-wrapper">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <h3>Par Email</h3>
+                <p>Envoyez-nous vos documents ou questions détaillées.</p>
+                <a href="mailto:support@ciras.fr" class="help-link">support@ciras.cg</a>
+            </div>
+
+            <div class="help-card">
+                <div class="icon-wrapper">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h3>Chat en direct</h3>
+                <p>Discutez en temps réel avec un conseiller disponible.</p>
+                <a href=""></a>
+                <button class="help-btn">Démarrer le chat</button>
+            </div>
         </div>
-        <button type="submit" class="btn-submit">Envoyer le signalement</button>
-    </form>
-</div>
+    </div>
+</section>
+    <section id="signaler" class="spa-section">
+        <div class="incident-container">
+            <h2 class="form-title">Signaler un incident au CIRAS</h2>
+            <p class="subtitle">Toutes les informations transmises sont sécurisées et confidentielles.</p>
+    
+            <form method="post" enctype="multipart/form-data" class="custom-form">
+                 {% csrf_token %}
+                <div class="form-grid">
+                {{ incident_form.as_p }}
+                </div>
+                <button type="submit" class="btn-submit">Envoyer</button>
+            </form>
+        </div>
 
-        </section>
+    </section>
+    <section id="apropos">
+        <div class="apropos">
 
-
+        </div>
+    </section>
 
         </main>
+
 </body>
+   <footer class="footer">
+    <div class="footer-container">
+        <div class="footer-col">
+            <div class="brand-box">
+                <img src="/static/logo.jpg/" alt="Logo"> <p>CENTRE D'INFORMATIQUE ET DE RECHERCHE DE L'ARMEE ET DE LA SECURITE</p>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <h3>Navigation</h3>
+            <ul>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#assistance">Assistance</a></li>
+                <li><a href="signaler">Signaler</a></li>
+                <li><a href="#informer">S'informer</a></li>
+                <li><a href="#apropos">À propos</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3>Liens utiles</h3>
+            <ul>
+                <li><a href="https://ciras.cg/">Site Officiel du Ciras</a></li>
+                <li><a href="https://sgg.cg/">SGG</a></li>
+                <li><a href="https://anssi.cg/">ANSSI</a></li>
+                <li><a href="#">ACSI</a></li>
+                <li><a href="#">ARPCE</a></li>
+                <li><a href="#">ADEN</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3>Nous contacter</h3>
+            <div class="newsletter-card">
+                <p>Inscrivez-vous à notre newsletter pour suivre nos actualités</p>
+                <div class="form-group">
+                    <input type="email" placeholder="Votre email">
+                    <button type="submit">S'inscrire</button>
+                </div>
+            </div>
+            <div class="contact-details">
+                <div><i class="fas fa-map-marker-alt"></i> <span>Immeuble CIRAS, rue LAMOTHE, B.P. 1542, Plateau-ville, Brazzaville</span></div>
+                <div><i class="fas fa-envelope"></i> <span>contact@ciras.cg</span></div>
+                <div><i class="fas fa-phone"></i> <span>+242 06 123 45 67</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        &copy; 2026 CIRAS
+    </div>
+
+    <a href="#" class="scroll-top"><i class="fas fa-arrow-up"></i></a>
+</footer>
 </html>
