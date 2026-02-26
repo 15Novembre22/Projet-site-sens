@@ -90,6 +90,23 @@
         bg.style.transform = `scale(1.1) translate(${moveX}px, ${moveY}px)`;
 });
 
+// Smooth parallax on scroll using requestAnimationFrame
+let latestScroll = window.scrollY || window.pageYOffset;
+let currentScroll = latestScroll;
+const scrollMultiplier = 0.02; // adjust to taste (higher = stronger effect)
+
+document.addEventListener('scroll', () => {
+    latestScroll = window.scrollY || window.pageYOffset;
+});
+
+function updateParallax() {
+    currentScroll += (latestScroll - currentScroll) * 0.08; // easing
+    bg.style.backgroundPosition = `center ${50 + currentScroll * scrollMultiplier}%`;
+    requestAnimationFrame(updateParallax);
+}
+
+requestAnimationFrame(updateParallax);
+
 
 
 
