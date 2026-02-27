@@ -276,19 +276,24 @@ nav a:hover, .menu-burger.active{
     transition: opacity .25s;
 }
 .content-section{
-background-color: var(--bg-light);
+  background-image: url(tech.jpg);
+  /* appliquer sur le background un flou */
+  backdrop-filter: blur(5px);
+  background-color: #fcfcfc;
+  background-size: cover;
+  background-attachment: fixed;
   padding: 50px 20px;
   font-family: 'Segoe UI', sans-serif;
 }
-.content-section h2{
+/*.content-section h2{
     text-align: center;
-    color: #034c65;
+    color: #f8f9fa;
     font-size: 2rem;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 10px;
     position: relative;  
-}
+}*/
 
 .grid-container {
     display: grid;
@@ -353,7 +358,7 @@ background-color: var(--bg-light);
 }
 .section-header h2 {
     font-size: 2rem;
-    color: #034c65;
+    color: #fdfefe;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -619,7 +624,9 @@ background-color: var(--bg-light);
 
 .help-section {
     padding: 60px 20px;
-    background-image: url(ado.jpg); /* Fond très léger pour détacher la section */
+    background-image: url(ado.jpg);
+    background-attachment: fixed;
+    background-size: cover;
     text-align: center;
 }
 
