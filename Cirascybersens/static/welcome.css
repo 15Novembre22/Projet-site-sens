@@ -19,7 +19,7 @@
 }
 
 :root {
-  --primary-blue: #007bff; /* Couleur du bouton et du texte d'accent */
+  --primary-blue: #004a61; /* Couleur du bouton et du texte d'accent */
   --badge-blue: #004a61;   /* Couleur du badge 24/7 */
   --text-dark: #333;       /* Couleur principale du texte */
   --text-light: #fff;      /* Couleur du texte sur fond sombre */
@@ -31,6 +31,8 @@ body {
     font-family: 'Times New Roman', Times, serif;
     font-size: 14px;
     overflow-x: hidden;
+    /* Espace en haut pour la navbar fixe (ajuster si nécessaire) */
+    padding-top: 90px;
 }
 
 html {
@@ -76,9 +78,27 @@ section {
 }
 
 header {
+    /* Fixe la barre de navigation en haut de l'écran */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 2000; /* Au-dessus du contenu */
+    background: rgba(0,0,0,0.45); /* Fond semi-transparent pour lisibilité */
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+}
+
+/* Centrer le contenu du header sans rendre le header lui-même limité */
+header nav {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 nav {
@@ -137,9 +157,9 @@ nav a:hover, .menu-burger.active{
         width: 100%;
         height: 100vh;
         background-color: rgba(208, 53, 53, 0.95); /* Ton rouge */
-        backdrop-filter: blur(30px);
-        transition: right 0.5s ease-in-out;
-        z-index: 1000;
+            backdrop-filter: blur(30px);
+            transition: right 0.5s ease-in-out;
+            z-index: 3000; /* Au-dessus du header pour le menu mobile */
     }
 
     nav ul.active {
@@ -276,14 +296,32 @@ nav a:hover, .menu-burger.active{
     transition: opacity .25s;
 }
 .content-section{
-  background-image: url(tech.jpg);
-  /* appliquer sur le background un flou */
-  backdrop-filter: blur(5px);
-  background-color: #fcfcfc;
-  background-size: cover;
-  background-attachment: fixed;
-  padding: 50px 20px;
-  font-family: 'Segoe UI', sans-serif;
+    position: relative;
+    padding: 50px 20px;
+    font-family: 'Segoe UI', sans-serif;
+    /* background handled via ::before so we can blur it */
+    background-color: rgba(0,0,0,0.12);
+    overflow: hidden;
+}
+
+.content-section::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url(tech.jpg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        filter: blur(8px) brightness(0.6);
+        transform: scale(1.05);
+        z-index: 0;
+}
+
+/* Assure que le contenu est au-dessus et lisible */
+.content-section > * {
+        position: relative;
+        z-index: 1;
+        color: #ffffff;
 }
 /*.content-section h2{
     text-align: center;
@@ -623,11 +661,32 @@ nav a:hover, .menu-burger.active{
 
 
 .help-section {
+    position: relative;
     padding: 60px 20px;
-    background-image: url(ado.jpg);
-    background-attachment: fixed;
-    background-size: cover;
+    /* Le background-image est géré via ::before pour pouvoir flouter */
+    background-color: rgba(0,0,0,0.25); /* légère superposition pour lisibilité */
     text-align: center;
+    overflow: hidden;
+}
+
+.help-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url(ado.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(8px) brightness(0.6); /* flou + assombrissement pour lisibilité */
+    transform: scale(1.05); /* évite les bords visibles après le flou */
+    z-index: 0;
+}
+
+/* Place le contenu au-dessus du pseudo-élément flouté */
+.help-section > * {
+    position: relative;
+    z-index: 1;
+    color: #ffffff; /* assure la lisibilité ; ajuste si besoin */
 }
 
 .help-title {
@@ -932,7 +991,7 @@ nav a:hover, .menu-burger.active{
 }
 
 h3 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: var(--text-dark);
   margin-bottom: 20px;
 }
@@ -940,6 +999,7 @@ h3 {
 h3 span {
   color: var(--bg-dark);
   font-weight: bold;
+  font-size: 2rem;
 }
 
 .description {
@@ -991,17 +1051,16 @@ h3 span {
 .btn-more {
   display: inline-block;
   padding: 15px 35px;
-  background-color: var(--primary-blue);
-  color: var(--text-light);
+  background-color: #033163;
   text-decoration: none;
   border-radius: 30px; /* Bouton ovale */
   font-weight: bold;
   font-size: 1.1rem;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
 }
 
 .btn-more:hover {
-  background-color: #033163;
+  background-color: #15b3f7;
   box-shadow: 0 5px 15px rgba(0,123,255,0.3);
 }
 
