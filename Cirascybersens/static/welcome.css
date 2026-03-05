@@ -8,13 +8,13 @@
 
 :root {
   --primary-green: #1a8a4d; /* Le vert institutionnel du CIRAS */
-  --text-gray: #666;
+  --text-gray: #f9f9f9;
   --bg-light: #f9f9f9;
-  --bg-dark: #062b4e;      /* Fond principal */
-  --card-bg:  #15e1e8;      /* Fond logo/newsletter */
-  --accent-green: #15e1e8; /* Vert bouton/icones */
-  --text-gold: #e2b14a;    /* Texte doré du logo */
-  --title-red: #cc3333;    /* Titres des colonnes */
+  --bg-dark: #050505;      /* Fond principal */
+  --card-bg:#b0b3b8 ;      /* Fond logo/newsletter */
+  --accent-green: #004a61; /* bleu institutionnel bouton/icones */
+  --text-gold: #fef8f8;    /* Texte doré du logo */
+  --title-white: #f7f7f7;    /* Titres des colonnes */
   --text-gray: #b0b3b8;    /* Liens et textes */
 }
 
@@ -85,10 +85,11 @@ header {
     right: 0;
     width: 100%;
     z-index: 2000; /* Au-dessus du contenu */
-    background: rgba(0,0,0,0.45); /* Fond semi-transparent pour lisibilité */
+   background-color: #ffffff;/* Fond blanc semi-transparent */
     -webkit-backdrop-filter: blur(6px);
     backdrop-filter: blur(6px);
     box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+    height: 85px;
 }
 
 /* Centrer le contenu du header sans rendre le header lui-même limité */
@@ -105,7 +106,8 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0;
+    padding: 15px 0;
+    
 }
 
 nav .logo {
@@ -114,7 +116,7 @@ nav .logo {
 }
 
 nav a:hover, .menu-burger.active{
-    color: aqua;
+    color: rgb(142, 142, 2);
 }
 
 /* --- STYLE DU BURGER --- */
@@ -133,7 +135,7 @@ nav a:hover, .menu-burger.active{
     display: block;
     width: 100%;
     height: 3px;
-    background-color: white;
+    background-color: rgb(14, 9, 120);
     border-radius: 3px;
     transition: 0.3s;
 }
@@ -157,9 +159,9 @@ nav a:hover, .menu-burger.active{
         width: 100%;
         height: 100vh;
         background-color: rgba(208, 53, 53, 0.95); /* Ton rouge */
-            backdrop-filter: blur(30px);
-            transition: right 0.5s ease-in-out;
-            z-index: 3000; /* Au-dessus du header pour le menu mobile */
+        backdrop-filter: blur(30px);
+        transition: right 0.5s ease-in-out;
+        z-index: 3000; /* Au-dessus du header pour le menu mobile */
     }
 
     nav ul.active {
@@ -167,7 +169,7 @@ nav a:hover, .menu-burger.active{
     }
 
     nav ul li { margin: 20px 0; font-size: 1.5rem; }
-    nav ul li a { color: white; text-decoration: none; }
+    nav ul li a { color: rgb(255, 255, 255); text-decoration: none; }
 }
 
 /* --- NAVIGATION ORDINATEUR (Min 901px) --- */
@@ -182,7 +184,7 @@ nav a:hover, .menu-burger.active{
     nav ul li { margin-left: 25px; }
     nav ul li a {
         text-decoration: none;
-        color: #F8F9FA;
+        color: #09325b;
         font-size: 1.2em;
     }
 }
@@ -246,7 +248,7 @@ nav a:hover, .menu-burger.active{
 
 /* --- Section Texte Responsive --- */
 .text {
-    padding: 10vh 0;
+   
     color: white;
     width: 90%;
     max-width: 800px;
@@ -257,6 +259,9 @@ nav a:hover, .menu-burger.active{
     font-size: clamp(2.5rem, 8vw, 5rem); /* Taille fluide selon l'écran */
     line-height: 1.2;
     margin-bottom: 1.5rem;
+    white-space: nowrap;
+    display: flex;
+    flex-wrap: nowrap;
 }
 
 .text p {
@@ -265,6 +270,7 @@ nav a:hover, .menu-burger.active{
     margin-bottom: 2rem;
     color: #F8F9FA;
     display: inline-block;
+    margin-top: 100px;
     
     
 }
@@ -288,7 +294,11 @@ nav a:hover, .menu-burger.active{
 .auto-typing {
     color: #007bff; /* Un joli bleu pour attirer l'oeil */
     font-weight: bold;
-    border-bottom: 2px solid #007bff; /* Optionnel : un soulignement dynamique */
+    border-bottom: 2px solid #007bff; 
+    white-space: nowrap;
+    display: inline-block;
+    margin-left: 10px;
+    display: inline-block;/* Optionnel : un soulignement dynamique */
 }
 
 .typed-fade-out {
@@ -296,6 +306,7 @@ nav a:hover, .menu-burger.active{
     transition: opacity .25s;
 }
 .content-section{
+    
     position: relative;
     padding: 50px 20px;
     font-family: 'Segoe UI', sans-serif;
@@ -312,7 +323,7 @@ nav a:hover, .menu-burger.active{
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        filter: blur(8px) brightness(0.6);
+        filter: blur(6px) brightness(0.6);
         transform: scale(1.05);
         z-index: 0;
 }
@@ -335,9 +346,10 @@ nav a:hover, .menu-burger.active{
 
 .grid-container {
     display: grid;
+    align-items: stretch;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
-    padding: 20px;
+    padding: 10px 20px;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -361,6 +373,9 @@ nav a:hover, .menu-burger.active{
 }
 
 .card-content {
+    height: 180px;
+    object-fit: cover;
+    width: 100%;
     padding: 12px 15px;;
     color:#555855;
 }
@@ -395,13 +410,14 @@ nav a:hover, .menu-burger.active{
     padding: 0 15px;
 }
 .section-header h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: #fdfefe;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     margin-bottom: 5px;
     position: relative;
+    margin-top: 0;
 
 }
 
@@ -420,18 +436,18 @@ nav a:hover, .menu-burger.active{
     color: #bdc3c7; /* Gris bleuté doux pour le contraste */
     max-width: 650px; /* Limite la largeur pour une meilleure lecture */
     line-height: 1.6;
-    font-weight: 300;
+    font-weight: 200;
 }
 
 .btn-read-more {
-    color: #b9090f;
+    color:#15e1e8 ;
     font-weight: bold;
     font-size: 0.85rem;
     transition: gap 0.3s;
 }
 
 .btn-read-more:hover{
-    color: #15e1e8;
+    color: #b9090f ;
 }
 
 .spa-section {
@@ -439,35 +455,66 @@ nav a:hover, .menu-burger.active{
     padding: 80px 10%;
     background-image: url(ado.jpg);
 }
-.incident-container {
+
+.split-container {
+    display: flex;
+    gap: 40px;            /* Espace entre le formulaire et le texte */
+    max-width: 1200px;    /* Largeur maximale de la section */
+    margin: 40px auto;    /* Centre la section horizontalement */
+    padding: 20px;
+    align-items: flex-start; /* Aligne les blocs vers le haut */
+ }
+.incident-form {
+    flex: 1.5;            /* Prend 60% de l'espace */
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Ombre légère */
+}
+
+/* Bloc de droite : Les informations */
+.incident-info {
+    flex: 1;              /* Prend 40% de l'espace */
+    background: #f8fbfc;  /* Couleur de fond légèrement différente */
+    padding: 30px;
+    border-radius: 15px;
+    border-left: 5px solid #004a61; /* Rappel de la couleur du CIRAS */
+    color: #333;
+}
+
+
+
+
+
+/*.incident-container {
     background: #ffffff;
     padding: 40px;
     border-radius: 16px;
     max-width: 600px;
     margin: 40px auto;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); /* Ombre légère pour le relief */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); /* Ombre légère pour le relief 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+}*/
 
 /* Titre et Sous-titre */
 .incident-container .form-title {
     text-align: center;
     color: #034c65; /* Bleu pro au lieu du rouge */
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 700;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
 }
 
 .incident-container .subtitle {
     text-align: center;
     color: #666;
-    font-size: 14px;
-    margin-bottom: 30px;
+    font-size: 12px;
+    margin-bottom: 15px;
 }
 
 /* Style des paragraphes Django (p) qui contiennent labels + inputs */
 .incident-container p {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     display: flex;
     flex-direction: column;
 }
@@ -475,9 +522,9 @@ nav a:hover, .menu-burger.active{
 /* Labels */
 .incident-container label {
     font-weight: 600;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
     color: #444;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 /* Inputs, Select, Textarea */
@@ -487,12 +534,18 @@ nav a:hover, .menu-burger.active{
     background-color: #f8fafc; /* Fond très clair */
     color: #333;
     border: 1px solid #e2e8f0;
-    padding: 12px 15px;
+    padding: 8px 12px;
     border-radius: 8px;
-    font-size: 15px;
+    font-size: 13px;
     transition: all 0.3s ease;
     width: 100%;
     box-sizing: border-box; /* Évite que l'input dépasse */
+}
+
+.incident-container textarea {
+    max-height: 80px;
+    min-height: 80px;
+    resize: vertical;
 }
 
 /* Focus : l'input s'illumine proprement */
@@ -574,6 +627,7 @@ nav a:hover, .menu-burger.active{
             line-height: 1.4;
             margin: 0;
         }
+        
         .social-links { display: flex; gap: 10px; }
         .social-links a {
             background: var(--accent-green);
@@ -608,7 +662,7 @@ nav a:hover, .menu-burger.active{
             border-radius: 12px;
             margin-bottom: 20px;
         }
-        .newsletter-card p { font-size: 0.9rem; margin-top: 0; }
+        .newsletter-card p,.brand-box p  { font-size: 0.9rem; margin-top: 0; color: #ffffff;}
         .form-group {
             display: flex;
             background: #242935;
@@ -648,6 +702,8 @@ nav a:hover, .menu-burger.active{
             display: flex; align-items: center; justify-content: center;
             color: white; text-decoration: none;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            position: fixed;
+            z-index: 9999;
         }
 
         /* Responsive */
@@ -677,7 +733,7 @@ nav a:hover, .menu-burger.active{
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    filter: blur(8px) brightness(0.6); /* flou + assombrissement pour lisibilité */
+    filter: blur(5px) brightness(0.8); /* flou + assombrissement pour lisibilité */
     transform: scale(1.05); /* évite les bords visibles après le flou */
     z-index: 0;
 }
@@ -691,14 +747,14 @@ nav a:hover, .menu-burger.active{
 
 .help-title {
     font-size: 2rem;
-    color: #034c65;
+    color:#fbf9f9 ;
     letter-spacing: 2px;
     margin-bottom: 10px;
     text-transform: uppercase;
 }
 
 .help-subtitle {
-    color: #666;
+    color:#fbf9f9;
     margin-bottom: 40px;
 }
 
@@ -784,10 +840,12 @@ nav a:hover, .menu-burger.active{
 
 
 /* Section de base */
+
 #apropos {
-    padding: 80px 0;
-    background: #ffffff;
-    overflow: hidden;
+  padding: 80px 0;
+  font-family: 'Open Sans', sans-serif; /* Une police propre et moderne */
+  background-color: #fff; /* Fond blanc propre */
+  overflow: hidden;
 }
 
 .apropos-container {
@@ -837,11 +895,6 @@ nav a:hover, .menu-burger.active{
 
 /* Image et Badge Dynamique */
 
-#apropos {
-  padding: 80px 0;
-  font-family: 'Open Sans', sans-serif; /* Une police propre et moderne */
-  background-color: #fff; /* Fond blanc propre */
-}
 
 .container-apropos {
   display: flex;
@@ -852,25 +905,6 @@ nav a:hover, .menu-burger.active{
   padding: 0 15px;
 }
 
-/*#apropos {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(0);
-    max-width: 1200px;
-    margin: 0 auto;       /* Centre le bloc sur la page 
-    padding: 80px 20px;   /* Ajoute de l'espace vertical 
-    overflow: hidden; 
-    border-radius: 100px;
-    
-    /* Optionnel : pour une police plus moderne 
-    font-family: sans-serif;
-    color: #333333;
- }*/
-
-/*.apropos-container {
-    display: flex;
-    align-items: center;
-    gap: 60px;
-}*/
 
 /* Texte et Contenu */
 .apropos-content {
@@ -1130,8 +1164,4 @@ h3 span {
     display: inline-block;
 }
 
-.brand-box p{
-
-    color: #716f6f;
-}
 

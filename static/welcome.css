@@ -17,9 +17,9 @@ html,body{height:100%;font-family:Arial,Helvetica,sans-serif;color:#111}
 
 /* Ensure the first section sits over the hero */
 main{position:relative}
-.text{min-height:75vh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:6rem 2rem;position:relative;z-index:1}
-.text h1{font-size:3rem;margin-bottom:1rem;color:#fff;text-shadow:0 4px 18px rgba(0,0,0,0.5)}
-.text p{color:#f2f2f2;max-width:900px;line-height:1.6}
+.text{min-height:75vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:6rem 2rem;position:relative;z-index:1}
+.text h1{font-size:3rem;margin:0 auto 1rem;color:#fff;text-shadow:0 4px 18px rgba(0,0,0,0.5)}
+.text p{color:#f2f2f2;max-width:900px;line-height:1.6;margin:0 auto;}
 
 .buttons{margin-top:1.5rem}
 .buttons .btn-incident,.buttons .cta-button{margin-right:1rem;padding:0.75rem 1.2rem;border:none;border-radius:6px;cursor:pointer}
@@ -36,3 +36,13 @@ main{position:relative}
 
 /* Footer spacing so hero doesn't hide content on small screens */
 section{padding:3rem 2rem}
+
+/* split layout for signale section */
+.spa-section .incident-container{display:flex;flex-wrap:wrap;gap:2rem;align-items:flex-start;}
+.spa-section .incident-form,
+.spa-section .incident-info{flex:1 1 45%;min-width:320px;}
+.spa-section .incident-form{max-width:600px;}
+.spa-section .incident-info{background:#f9f9f9;padding:1.5rem;border-radius:8px;}
+.spa-section .incident-info h2{margin-top:0;}
+.spa-section .incident-info ul{list-style:disc inside;margin-left:1rem;}
+@media(max-width:768px){.spa-section .incident-container{flex-direction:column;}}
