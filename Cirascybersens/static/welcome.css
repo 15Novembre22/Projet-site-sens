@@ -248,17 +248,22 @@ nav a:hover, .menu-burger.active{
 
 /* --- Section Texte Responsive --- */
 .text {
-   
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center;
+    
     color: white;
     width: 90%;
     max-width: 800px;
     margin: 0 auto;
+    padding-top: 50px;
 }
 
 .text h1 {
     font-size: clamp(2.5rem, 8vw, 5rem); /* Taille fluide selon l'écran */
     line-height: 1.2;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.2rem;
     white-space: nowrap;
     display: flex;
     flex-wrap: nowrap;
