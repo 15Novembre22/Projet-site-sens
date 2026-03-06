@@ -243,9 +243,12 @@ nav a:hover, .menu-burger.active{
     letter-spacing: 1.5px;
 }
 
-.text h1 { font-size: 75px; } /* Grande taille sur PC */
+.text h1 { font-size: 75px;
+         } /* Grande taille sur PC */
 
-
+h1{
+      margin-top: 100px; 
+}
 /* --- Section Texte Responsive --- */
 .text {
     display: flex;
@@ -275,7 +278,7 @@ nav a:hover, .menu-burger.active{
     margin-bottom: 2rem;
     color: #F8F9FA;
     display: inline-block;
-    margin-top: 100px;
+    margin-top: 10px;
     
     
 }
@@ -488,18 +491,6 @@ nav a:hover, .menu-burger.active{
 }
 
 
-
-
-
-/*.incident-container {
-    background: #ffffff;
-    padding: 40px;
-    border-radius: 16px;
-    max-width: 600px;
-    margin: 40px auto;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); /* Ombre légère pour le relief 
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}*/
 
 /* Titre et Sous-titre */
 .incident-container .form-title {
@@ -752,11 +743,14 @@ nav a:hover, .menu-burger.active{
 
 .help-title {
     font-size: 2rem;
-    color:#fbf9f9 ;
+    color:#034c65 ;
     letter-spacing: 2px;
     margin-bottom: 10px;
     text-transform: uppercase;
 }
+
+
+
 
 .help-subtitle {
     color:#fbf9f9;
