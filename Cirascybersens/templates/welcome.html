@@ -79,33 +79,46 @@
         });
 
         const bg = document.querySelector('.parallax-bg');
+        const bgInformer = document.querySelector('.parallax-bg-informer');
+        const bgAssistance = document.querySelector('.parallax-bg-assistance');
+        const bgSignaler = document.querySelector('.parallax-bg-signaler');
+
+        const parallaxElements = [bg, bgInformer, bgAssistance, bgSignaler];
 
         document.addEventListener('mousemove', (e) => {
-    // On calcule la position de la souris par rapport au centre de l'écran
-    // Division par 60 pour un mouvement très subtil et élégant
-        const moveX = (window.innerWidth / 2 - e.clientX) / 60;
-        const moveY = (window.innerHeight / 2 - e.clientY) / 60;
+            const moveX = (window.innerWidth / 2 - e.clientX) / 60;
+            const moveY = (window.innerHeight / 2 - e.clientY) / 60;
+            if (bg) bg.style.transform = `scale(1.1) translate(${moveX}px, ${moveY}px)`;
+            parallaxElements.forEach(el => {
+                if (el) el.style.transform = `scale(1.05) translate(${moveX * 0.5}px, ${moveY * 0.5}px)`;
+            });
+        });
 
-    // On applique le mouvement en gardant le scale(1.1)
-        bg.style.transform = `scale(1.1) translate(${moveX}px, ${moveY}px)`;
-});
+        // Smooth parallax on scroll using requestAnimationFrame
+        let latestScroll = window.scrollY || window.pageYOffset;
+        let currentScroll = latestScroll;
+        const scrollMultiplier = 0.04; // adjust to taste (higher = stronger effect)
 
-// Smooth parallax on scroll using requestAnimationFrame
-let latestScroll = window.scrollY || window.pageYOffset;
-let currentScroll = latestScroll;
-const scrollMultiplier = 0.04; // adjust to taste (higher = stronger effect)
+        document.addEventListener('scroll', () => {
+            latestScroll = window.scrollY || window.pageYOffset;
+        });
 
-document.addEventListener('scroll', () => {
-    latestScroll = window.scrollY || window.pageYOffset;
-});
+        function updateParallax() {
+            currentScroll += (latestScroll - currentScroll) * 0.08; // easing
+            if (bg) bg.style.backgroundPosition = `center ${50 + currentScroll * scrollMultiplier}%`;
+            // For other elements, adjust based on their position
+            parallaxElements.forEach((el, index) => {
+                if (el && el !== bg) {
+                    const rect = el.parentElement.getBoundingClientRect();
+                    const offset = rect.top + window.scrollY;
+                    const parallaxOffset = (currentScroll - offset) * scrollMultiplier * 0.5;
+                    el.style.transform = `scale(1.05) translateY(${parallaxOffset}px)`;
+                }
+            });
+            requestAnimationFrame(updateParallax);
+        }
 
-function updateParallax() {
-    currentScroll += (latestScroll - currentScroll) * 0.08; // easing
-    bg.style.backgroundPosition = `center ${50 + currentScroll * scrollMultiplier}%`;
-    requestAnimationFrame(updateParallax);
-}
-
-requestAnimationFrame(updateParallax);
+        requestAnimationFrame(updateParallax);
 
 
 
@@ -159,6 +172,7 @@ requestAnimationFrame(updateParallax);
         </script>
 
     <section id="informer" class="content-section">
+        <div class="parallax-bg-informer"></div>
             <div class="section-header">
                 <h2>S'informer</h2>
                 <p>Apprenez à déjouer les pièges des pirates</p>
@@ -178,8 +192,8 @@ requestAnimationFrame(updateParallax);
                 <h3>{{ conseil.titre }}</h3>
                 <p>{{ conseil.description|truncatechars:150 }}</p>
                 <div class="card-footer">
-                <span class="btn-read-more">En savoir plus <i class="arrow-icon">→</i></span>
-            </div>
+                    <span class="btn-read-more">En savoir plus <i class="arrow-icon">→</i></span>
+                </div>
             </div>
             
         </article>
@@ -189,6 +203,7 @@ requestAnimationFrame(updateParallax);
     </div> </section>
 
     <section id="assistance" class="help-section">
+        <div class="parallax-bg-assistance"></div>
     <div class="help-container">
         <h2 class="help-title">BESOIN D'AIDE ?</h2>
         <p class="help-subtitle">Contacter un assistant via l'un des canaux ci-dessous :</p>
@@ -224,6 +239,7 @@ requestAnimationFrame(updateParallax);
     </div>
 </section>
     <section id="signaler" class="spa-section">
+        <div class="parallax-bg-signaler"></div>
         <div class="incident-container split-container">
             <div class="incident-form">
                 <h2 class="form-title">Signaler un incident au CIRAS</h2>
