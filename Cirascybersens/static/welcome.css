@@ -64,7 +64,7 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('/static/tech.jpg') no-repeat center center / cover;
+    background: url('/static/call.jpg') no-repeat center center / cover;
     z-index: -1;
     transform: scale(1.05);
     will-change: transform;
@@ -358,14 +358,6 @@ h1{
     background-color: rgba(0,0,0,0.12);
     overflow: hidden;
 }
-
-/* Assure que le contenu est au-dessus et lisible */
-.content-section > * {
-        position: relative;
-        z-index: 1;
-        color: #ffffff;
-}
-
 
 .grid-container {
     display: grid;
@@ -740,12 +732,7 @@ h1{
     overflow: hidden;
 }
 
-/* Place le contenu au-dessus du pseudo-élément flouté */
-.help-section > * {
-    position: relative;
-    z-index: 1;
-    color: #ffffff; /* assure la lisibilité ; ajuste si besoin */
-}
+
 
 .help-title {
     font-size: 2rem;
@@ -1162,3 +1149,13 @@ h3 span {
 }
 
 
+.alert-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    font-weight: 500;
+}

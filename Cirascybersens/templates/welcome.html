@@ -250,6 +250,15 @@
                     <div class="form-grid">
                         {{ incident_form.as_p }}
                     </div>
+                    {% if messages %}
+    <div class="messages-container">
+        {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
                     <button type="submit" class="btn-submit">Envoyer</button>
                 </form>
             </div>
