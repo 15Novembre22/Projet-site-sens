@@ -28,7 +28,8 @@
 }
 
 body {
-    font-family: 'Times New Roman', Times, serif;
+    /*font-family: 'Times New Roman', Times, serif;*/
+    font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     overflow-x: hidden;
     /* Espace en haut pour la navbar fixe (ajuster si nécessaire) */
@@ -50,7 +51,6 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    /* Remplacez par le chemin de votre image de clavier */
     background: url('/static/tech.jpg') no-repeat center center / cover;
     z-index: -1; /* Derrière tout le contenu */
     transform: scale(1.1); /* Zoom de 10% pour la marge de mouvement */
@@ -65,7 +65,7 @@ section {
     width: 100%;
     height: 100%;
     /* Remplacez par le chemin de votre image */
-    background: url('/static/assistant.jpg') no-repeat center center / cover;
+    background: url('/static/informer.jpeg') no-repeat center center / cover;
     z-index: -1;
     transform: scale(1.05);
     will-change: transform;
@@ -78,7 +78,7 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('/static/ado.jpg') no-repeat center center / cover;
+    background: url('/static/call.jpg') no-repeat center center / cover;
     z-index: -1;
     transform: scale(1.05);
     will-change: transform;
@@ -224,7 +224,7 @@ nav a:hover, .menu-burger.active{
     nav ul li a {
         text-decoration: none;
         text-transform: uppercase;
-        color: #09325b;
+        color: #228B22;
         font-size: 1.2em;
     }
 }
@@ -260,7 +260,7 @@ nav a:hover, .menu-burger.active{
     background-color: #E31E24;
     border-bottom: 3px solid #b32d2e;
     color: aqua;
-    box-shadow: 0 4px 0 #fafbfa; /* Effet de relief */
+   /* box-shadow: 0 4px 0 #fafbfa;  Effet de relief */
 }
 
 .buttons button a{
@@ -269,9 +269,9 @@ nav a:hover, .menu-burger.active{
 }
 
 .cta-button {
-    background-color:#0984e3;
+    background-color:#228B22;
     color: aqua;
-    box-shadow: 0 4px 0 #fafaf9;
+    /*box-shadow: 0 4px 0 #fafaf9;*/
     border-bottom: 3px solid #076dbb
 }
 
@@ -281,6 +281,7 @@ nav a:hover, .menu-burger.active{
     margin-bottom: 3px; /* Compense la perte de bordure pour éviter le saut */
     filter: brightness(1.1);
     letter-spacing: 1.5px;
+    color:#FFD700;
 }
 
 .text h1 { font-size: 75px;
@@ -324,6 +325,7 @@ h1{
 }
 .text p:hover{
     animation: elastic-bounce 2s infinite alternate;
+
 }
 
 @keyframes elastic-bounce {
@@ -340,7 +342,7 @@ h1{
 
 
 .auto-typing {
-    color: #007bff; /* Un joli bleu pour attirer l'oeil */
+    color: #90EE90; /* Un joli bleu pour attirer l'oeil */
     font-weight: bold;
     border-bottom: 2px solid #007bff; 
     white-space: nowrap;
@@ -452,7 +454,10 @@ h1{
 
 .section-header p {
     font-size: 1.1rem;
-    color: #bdc3c7; /* Gris bleuté doux pour le contraste */
+    background-color: white;
+    color: black;  
+    border-radius: 8px; 
+    width: 30%;
     max-width: 650px; /* Limite la largeur pour une meilleure lecture */
     line-height: 1.6;
     font-weight: 200;
@@ -483,6 +488,8 @@ h1{
     padding: 20px;
     align-items: flex-start; /* Aligne les blocs vers le haut */
  }
+
+
 .incident-form {
     flex: 1.5;            /* Prend 60% de l'espace */
     background: #ffffff;
@@ -506,7 +513,7 @@ h1{
 /* Titre et Sous-titre */
 .incident-container .form-title {
     text-align: center;
-    color: #034c65; /* Bleu pro au lieu du rouge */
+    color: #FF0000; /* Bleu pro au lieu du rouge */
     font-size: 20px;
     font-weight: 700;
     margin-bottom: 5px;
@@ -577,7 +584,7 @@ h1{
 .btn-submit {
     width: 100%; /* Largeur totale pour mobile-first */
     padding: 14px;
-    background-color: #034c65;
+    background-color: #228B22;
     color: white;
     border: none;
     border-radius: 50px;
@@ -586,6 +593,10 @@ h1{
     cursor: pointer;
     transition: background 0.3s ease, transform 0.2s ease;
     margin-top: 10px;
+}
+
+.incident-info h2 , .incident-info p{
+    color:#FF0000;
 }
 
 .badge{
@@ -821,7 +832,7 @@ h1{
 }
 
 .help-btn {
-    background: #034c65;
+    background:#228B22;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -1069,14 +1080,20 @@ h3 span {
 
 .item i {
   font-size: 2rem;
-  color: var(--primary-blue);
+  color: #228B22;
   margin-bottom: 15px;
   display: inline-block;
 }
 
-.item h4 {
+.content-text span{
   font-size: 1.3rem;
-  color: var(--text-dark);
+  color:#228B22;
+  margin-bottom: 10px;
+}
+
+.mission-vision .item h4 {
+  font-size: 1.3rem;
+  color:#228B22;
   margin-bottom: 10px;
 }
 
@@ -1086,28 +1103,12 @@ h3 span {
   color: #777;
 }
 
-.btn-more {
-  display: inline-block;
-  padding: 15px 35px;
-  background-color: #033163;
-  text-decoration: none;
-  border-radius: 30px; /* Bouton ovale */
-  font-weight: bold;
-  font-size: 1.1rem;
-
-}
-
-.btn-more:hover {
-  background-color: #15b3f7;
-  box-shadow: 0 5px 15px rgba(0,123,255,0.3);
-}
-
 /* Badge 24/7 */
 .badge-247 {
   position: absolute;
   bottom: 20px;
   right: 20px;
-  background-color: var(--badge-blue);
+  background-color:#228B22;
   color: var(--text-light);
   padding: 15px 25px;
   border-radius: 12px;
@@ -1134,7 +1135,6 @@ h3 span {
     50% { transform: translateY(-20px); }
     100% { transform: translateY(0px); }
 }
-
 
 /* Responsive */
 @media (max-width: 992px) {
@@ -1180,13 +1180,18 @@ h3 span {
 .btn-more {
   display: inline-block;
   padding: 15px 35px;
-  background-color: var(--primary-blue);
+  background-color: #228B22;
   color: var(--text-light);
   text-decoration: none;
   border-radius: 30px; /* Bouton ovale */
   font-weight: bold;
   font-size: 1.1rem;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-more:hover {
+  background-color: #15b3f7;
+  box-shadow: 0 5px 15px rgba(0,123,255,0.3);
 }
 
 .apropos-content .btn-primary{
