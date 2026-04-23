@@ -32,7 +32,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     overflow-x: hidden;
-    /* Espace en haut pour la navbar fixe (ajuster si nécessaire) */
+    /* Espace en haut pour la navbar fixe */
     padding-top: 90px;
 }
 
@@ -616,8 +616,8 @@ h1{
 
 
 
-        .footer {
-            background-color: var(--bg-dark);
+    .footer {
+            background-color:#228B22;
             color: white;
             padding: 60px 20px 20px;
         }
@@ -659,6 +659,7 @@ h1{
             border-radius: 6px; text-decoration: none;
             transition: 0.3s;
         }
+        .social-links a:hover { background:yellow; }
 
         /* Styles colonnes titres et liens */
         .footer-col h3 {
@@ -670,12 +671,12 @@ h1{
         .footer-col ul { list-style: none; padding: 0; }
         .footer-col ul li { margin-bottom: 12px; }
         .footer-col ul li a {
-            color: var(--text-gray);
+            color: White;
             text-decoration: none;
             font-size: 0.95rem;
             transition: color 0.3s;
         }
-        .footer-col ul li a:hover { color: white; }
+        .footer-col ul li a:hover { color: yellow; }
 
         /* Colonne 4: Newsletter & Contact */
         .newsletter-card {
@@ -692,18 +693,18 @@ h1{
             overflow: hidden;
         }
         .form-group input {
-            background: transparent; border: none;
+            background: white; border: none;
             padding: 10px; color: white; flex: 1; outline: none;
         }
         .form-group button {
-            background: var(--accent-green);
+            background: #228B22;
             color: white; border: none;
             padding: 0 15px; font-weight: bold; cursor: pointer;
         }
 
-        .contact-details { font-size: 0.9rem; color: var(--text-gray); }
+        .contact-details { font-size: 0.9rem; color: white; }
         .contact-details div { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
-        .contact-details i { color: var(--accent-green); margin-top: 3px; }
+        .contact-details i { color: white; margin-top: 3px; }
 
         /* Bottom bar */
         .footer-bottom {
@@ -711,8 +712,17 @@ h1{
             margin-top: 50px;
             padding-top: 20px;
             text-align: center;
-            color: var(--text-gray);
+            color: white;
             font-size: 0.85rem;
+        }
+        .buttons .pro{
+            background-color: #228B22;
+        }
+        .buttons .pro a{
+            color:#228B22;
+        }
+        .buttons .pro a:hover{
+            color:yellow;
         }
 
         /* Bouton Retour en haut */
@@ -1208,4 +1218,12 @@ h3 span {
     border: 1px solid transparent;
     border-radius: .25rem;
     font-weight: 500;
+}
+.footer .footer-bottom{
+    border-top: 1px solid #1f2531;
+    margin-top: 50px;
+    padding-top: 20px;
+    text-align: center;
+    color: white;
+    font-size: 0.85rem;
 }
